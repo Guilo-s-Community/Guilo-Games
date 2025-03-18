@@ -16,13 +16,13 @@ public class BulletScript : MonoBehaviour
     {
         if (hitInfo.tag != "Bullet")
             {
+                if (hitInfo.tag == "Enemy")
+                {
+                    ScoreScript.instance.AddScore(10);
+                }
                 Destroy(gameObject);
             }
-        else if (hitInfo.tag == "Enemy")
-        {
-            ScoreScript.instance.AddScore(10);
-
-        }
+    
     }
 
 }

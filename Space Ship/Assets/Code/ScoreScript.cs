@@ -1,6 +1,6 @@
 using TMPro;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class ScoreScript : MonoBehaviour
 {
     public static ScoreScript instance; // Singleton para fácil acesso ao score
@@ -26,14 +26,21 @@ public class ScoreScript : MonoBehaviour
         score += points;
         UpdateScoreText();
     }
-    public void SubScore(int points)
-    {
-        score -= points;
-        UpdateScoreText();
-    }
 
     private void UpdateScoreText()
     {
         scoreText.text = "Score: " + score.ToString();
+
     }
+
+    void Update()
+    {
+        if (score >= 1109){
+        SceneManager.LoadScene("Ganhou");
+    }
+    }
+
+    
+
+    
 }

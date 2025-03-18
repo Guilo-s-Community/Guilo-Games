@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
     }
     public GameObject instructionsPanel;
     public void PlayGame(){
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync("CenaJogo");
     }
     public void QuitGame(){
         Application.Quit();
@@ -16,6 +16,10 @@ public class MainMenu : MonoBehaviour
     public void OpenInstructions()
     {
         instructionsPanel.SetActive(true);
+    }
+
+    public void Menu(){
+        SceneManager.LoadSceneAsync("MainMenu");
     }
 
 }
