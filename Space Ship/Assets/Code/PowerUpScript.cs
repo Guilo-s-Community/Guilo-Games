@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class PowerUpScript : MonoBehaviour
 {
-    public float slowMotionDuration = 3f; 
+    public float slowMotionDuration = 1f; 
     public float slowMotionFactor = 0.5f;
 
     public float speed;
