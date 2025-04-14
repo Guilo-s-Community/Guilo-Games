@@ -1,0 +1,48 @@
+using System;
+using System.Threading;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+public class holdNextLevel : MonoBehaviour
+{
+    public float holdDuration = 1f;
+    public Image fillSquare;
+
+    private float holdTimer = 0;
+    private bool isHolding = false;
+
+    public static event Action OnHoldComplete;
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (isHolding)
+        {
+            holdTimer +=Time.deltaTime;
+            fillSquare.fillAmount = holdTimer / holdDuration;
+            if (holdTimer >= holdDuration)
+            {
+                OnHoldComplete.Invoke();
+                ResetHold();
+            }
+        }
+    }
+
+    public void OnHold(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            isHolding = true;
+        }
+        else if (context.canceled)
+        {
+            ResetHold();
+        }
+    }
+    private void ResetHold()
+    {
+        isHolding = false;
+        holdTimer = 0;
+        fillSquare.fillAmount = 0;
+    }
+}
